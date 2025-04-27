@@ -17,12 +17,22 @@ import java.util.Map;
 public class ProductsController {
     private final ProductsService productsService;
 
+    /**
+     *
+     * @return list of products in the database
+     */
     @GetMapping("get-products")
     @ResponseStatus(HttpStatus.OK)
     public List<ProductsDTO> getProducts() {
         return productsService.getProducts();
     }
 
+    /**
+     *
+     * @param product product to be updated data
+     * @return success msg
+     * patch for partial update not the entire data needs to be sent
+     */
     @PatchMapping("update-product")
     @ResponseStatus(HttpStatus.OK)
     public ApiResponse updateProduct(@RequestBody Map<String, Object> product) {
@@ -30,9 +40,15 @@ public class ProductsController {
         return new ApiResponse(true, "update successful");
     }
 
+    /**
+     *
+     * @param productsDTO data of product to be created
+     * @return success msg with id of created product
+     */
     @PostMapping("create-products")
     @ResponseStatus(HttpStatus.CREATED)
-    public Integer createProducts(@RequestBody ProductsDTO productsDTO) {
-        return productsService.createProduct(productsDTO);
+    public ApiResponse createProducts(@RequestBody ProductsDTO productsDTO) {
+
+        return new ApiResponse(true, "created successfully", productsService.createProduct(productsDTO));
     }
 }

@@ -21,7 +21,7 @@ public class ProductsServiceImpl implements ProductsService {
 
     @Override
     public void updateProduct(Map<String, Object> product) {
-        ProductsEntity productsEntity = productsRepository.getReferenceById(Integer.parseInt(product.get("seq").toString()));
+        ProductsEntity productsEntity = productsRepository.getReferenceById(Integer.parseInt(product.get("id").toString()));
         generalService.updateEntity(product, productsEntity, ProductsEntity.class);
 
         productsRepository.saveAndFlush(productsEntity);

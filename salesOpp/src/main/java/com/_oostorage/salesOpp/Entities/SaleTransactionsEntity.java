@@ -26,5 +26,5 @@ public class SaleTransactionsEntity {
     private Integer quantity;
     @Basic
     @Column(name = "price")
-    private BigDecimal price;
+    private Double price;
 }

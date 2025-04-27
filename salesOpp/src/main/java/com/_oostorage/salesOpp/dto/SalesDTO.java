@@ -4,12 +4,16 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 @Data
 public class SalesDTO {
-    private int id;
+    private Integer id;
     private Date creationDate;
     private Integer clientId;
+    ClientsDTO clientsDTO;
     private Integer sellerId;
-    private BigDecimal total;
+    SellersDTO sellersDTO;
+    private Double total;
+    List<SaleTransactionsDTO> saleTransactionsDTOList;
 }

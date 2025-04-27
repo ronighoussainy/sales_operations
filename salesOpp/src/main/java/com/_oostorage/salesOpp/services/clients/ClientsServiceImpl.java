@@ -20,9 +20,9 @@ public class ClientsServiceImpl implements ClientsService {
     private final GeneralService generalService;
 
     @Override
-    public void updateClient(Map<String, Object> product) {
-        ClientsEntity clientsEntity = clientsRepository.getReferenceById(Integer.parseInt(product.get("seq").toString()));
-        generalService.updateEntity(product, clientsEntity, ClientsEntity.class);
+    public void updateClient(Map<String, Object> client) {
+        ClientsEntity clientsEntity = clientsRepository.getReferenceById(Integer.parseInt(client.get("id").toString()));
+        generalService.updateEntity(client, clientsEntity, ClientsEntity.class);
 
         clientsRepository.saveAndFlush(clientsEntity);
 
@@ -37,5 +37,11 @@ public class ClientsServiceImpl implements ClientsService {
     public Integer createClient(ClientsDTO clientsDTO) {
         ClientsEntity clientsEntity = clientsMapper.clientsDTOToClientsEntity(clientsDTO);
         return clientsRepository.saveAndFlush(clientsEntity).getId();
+    }
+
+    @Override
+    public ClientsDTO getClientById(Integer id) {
+        return clientsMapper.clientsEntityToClientsDTO(clientsRepository.getReferenceById(id));
+
     }
 }

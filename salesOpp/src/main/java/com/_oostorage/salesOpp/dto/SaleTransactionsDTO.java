@@ -9,5 +9,5 @@ public class SaleTransactionsDTO {
     private Integer saleId;
     private Integer productId;
     private Integer quantity;
-    private BigDecimal price;
+    private Double price;
 }

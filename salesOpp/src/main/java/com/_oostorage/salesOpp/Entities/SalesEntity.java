@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import jakarta.persistence.*;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -18,7 +19,7 @@ public class SalesEntity {
     private int id;
     @Basic
     @Column(name = "creation_date")
-    private Date creationDate;
+    private Date creationDate = new Date();
     @Basic
     @Column(name = "client_id")
     private Integer clientId;
@@ -27,6 +28,6 @@ public class SalesEntity {
     private Integer sellerId;
     @Basic
     @Column(name = "total")
-    private BigDecimal total;
+    private Double total = 0.0;
 
-  }
+}
